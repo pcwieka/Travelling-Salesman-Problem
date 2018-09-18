@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TSP-ACO</title>
+
+    <script src="webjars/jquery/3.3.1/jquery.min.js"></script>
+
+    <script th:src="@{salesman.js}"></script>
+    <script th:src="@{jquery.blockUI.js}"></script>
+    <link href="webjars/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="slider.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+    <link href="loader.css" rel="stylesheet">
+
+    <script src="webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="container" >
+
+    <div class="row main">
+        <h3>&nbsp;&nbsp;Algorytm mrówkowy w problemie komiwojażera</h3>
+    </div>
+
+    <div class="row main">
+
+        <div class="col" >
+
+            <canvas id="canvas" width="650" height="550" style="border:2px solid #d3d3d3;"></canvas>
+            <br>
+            <label id="trailLength"></label>
+            <br>
+            <button id="clearAllButton" type="button" class="btn btn-secondary">Wyczyść wszystko</button>
+            <button id="clearTrailsButton" type="button" class="btn btn-secondary">Wyczyść ścieżkę</button>
+            <button id="processButton" type="button" class="btn btn-success">Oblicz ścieżkę</button>
+
+        </div>
+
+        <div class="col">
+
+            <form>
+
+                <div class="form-group">
+                    <label for="alphaSlider">Priorytet feromonu (alpha):&nbsp;</label><span id = "alpha" class="span-inline-right font-weight-bold"></span><br>
+                    <span class="span-inline-left">1&nbsp;</span><input type="range" min="1" max="15" value="1" class="slider" id="alphaSlider"><span class="span-inline-right">&nbsp;15</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="betaSlider">Priorytet odległości (beta):&nbsp;</label><span id = "beta" class="span-inline-right font-weight-bold"></span><br>
+                    <span class="span-inline-left">1&nbsp;</span><input type="range" min="1" max="15" value="5" class="slider" id="betaSlider"><span class="span-inline-right">&nbsp;15</span>
+                </div>
+
+                <div class="form-group">
+                <label for="evaporationSlider">Parowanie feromonu (rho):&nbsp;</label><span id = "evaporation" class="span-inline-right font-weight-bold"></span><br>
+                <span class="span-inline-left">0.1&nbsp;</span><input type="range" min="0.1" max="1" step="0.1" value="0.5" class="slider" id="evaporationSlider"><span class="span-inline-right">&nbsp;1</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="qSlider">Ilość feromonu per mrówka per ścieżka:&nbsp;</label><span id = "q" class="span-inline-right font-weight-bold"></span><br>
+                    <span class="span-inline-left">100&nbsp; </span><input type="range" min="100" max="1000" step="100" value="500" class="slider" id="qSlider"><span class="span-inline-right">&nbsp;1000</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="antFactorSlider">Procent mrówek użytych na miasto:&nbsp;</label><span id = "antFactor" class="span-inline-right font-weight-bold"></span><br>
+                    <span class="span-inline-left">0.1&nbsp; </span><input type="range" min="0.1" max="1" step="0.1" value="0.8" class="slider" id="antFactorSlider"><span class="span-inline-right">&nbsp;1</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="randomFactorSlider">Współczynnik losowości:&nbsp;</label><span id = "randomFactor" class="span-inline-right font-weight-bold"></span><br>
+                    <span class="span-inline-left">0.01&nbsp; </span><input type="range" min="0.01" max="1" step="0.04" value="0.01" class="slider" id="randomFactorSlider"><span class="span-inline-right">&nbsp;1</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="attemptsSlider">Liczba prób ustalenia najlepszej ścieżki:&nbsp;</label><span id = "attempts" class="span-inline-righ font-weight-bold"></span><br>
+                    <span class="span-inline-left">1&nbsp; </span><input type="range" min="10" max="1000" step="10" value="200" class="slider" id="attemptsSlider"><span class="span-inline-right">&nbsp;1000</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="iterationsSlider">Liczba iteracji algorytmu w próbie:&nbsp;</label><span id = "iterations" class="span-inline-righ font-weight-bold"></span><br>
+                    <span class="span-inline-left">100&nbsp; </span><input type="range" min="100" max="20000" step="100" value="5000" class="slider" id="iterationsSlider"><span class="span-inline-right">&nbsp;20K</span>
+                </div>
+
+            </form>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<div id="modal">
+    <img id="loader" src="loader.gif" alt="Mrówki działają i proszą o cierpliwość..."/>
+</div>
+
+</body>
+</html>

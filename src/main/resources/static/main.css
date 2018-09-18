@@ -1,0 +1,26 @@
+.span-inline-left {
+
+    display: inline-block;
+    text-align: right;
+}
+
+.span-inline-right {
+
+    display: inline-block;
+    text-align: left;
+
+}
+
+div.main {
+
+    width:auto;
+    margin: 20px;
+
+}
+
+#canvas{
+
+    background-color: #eefaea;
+
+}
+
